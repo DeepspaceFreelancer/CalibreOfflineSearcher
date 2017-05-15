@@ -1,7 +1,5 @@
 package com.calibreofflinesearcher;
 
-import java.text.Normalizer;
-
 class BookInfo {
 
     final int id;
