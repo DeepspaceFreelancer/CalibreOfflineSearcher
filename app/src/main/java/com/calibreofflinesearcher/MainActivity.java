@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private final FileOpener fileOpener = new FileOpener();
 
     //private final static String LIBRARY_LOCATION = "/mnt/sdcard/EkartLaszlo/Magyar2/";
-    private final static String LIBRARY_LOCATION = "/mnt/external_sd/Magyar/";
+    //private final static String LIBRARY_LOCATION = "/mnt/external_sd/Magyar/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +51,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
 
-        try {
-            queryExecuter.connectQueryDatabase(LIBRARY_LOCATION);
-        } catch (Exception e) {
-            Toast.makeText(this, String.format("Error: %s", e.getMessage()), Toast.LENGTH_LONG).show();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!queryExecuter.isOpen()) {
+            try {
+                queryExecuter.connectQueryDatabase(Settings.getInstance().getLibraryLocation());
+            } catch (Exception e) {
+                Toast.makeText(this, String.format("Error: %s", e.getMessage()), Toast.LENGTH_LONG).show();
+            }
         }
     }
 

@@ -32,13 +32,17 @@ class QueryExecuter {
         }
     }
 
-    private final static String LIBRARY_NAME = "normalized.db";
+    //private final static String LIBRARY_NAME = "normalized.db";
     private SQLiteDatabase connection;
+
+    public boolean isOpen() {
+        return connection != null;
+    }
 
     //region Connection 2 Database -------------------------------------------------------------------------------------
     public void connectQueryDatabase(final String libraryLocation) {
         connection = SQLiteDatabase.openDatabase(
-                libraryLocation + LIBRARY_NAME, null,
+                libraryLocation, null,
                 SQLiteDatabase.OPEN_READONLY | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
     }
 
