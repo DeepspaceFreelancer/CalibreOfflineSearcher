@@ -11,13 +11,55 @@
     android:orientation="vertical"
     tools:context="com.calibreofflinesearcher.MainActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingTop="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:orientation="horizontal" >
+
+        <!--<ToggleButton-->
+            <!--android:id="@+id/tgbEkezet"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textOn="Ekezet"-->
+            <!--android:textOff="Ekezet"-->
+            <!--android:text="Ekezet" />-->
+
+        <!--<ToggleButton-->
+            <!--android:id="@+id/tgbCim"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textOn="Cim"-->
+            <!--android:textOff="Cim"-->
+            <!--android:text="Cim" />-->
+
+        <!--<ToggleButton-->
+            <!--android:id="@+id/tgbSzerzo"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textOn="Szerzo"-->
+            <!--android:textOff="Szerzo"-->
+            <!--android:text="Szerzo" />-->
+
+        <!--<ToggleButton-->
+            <!--android:id="@+id/tgbCimke"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textOn="Cimke"-->
+            <!--android:textOff="Cimke"-->
+            <!--android:text="Cimke" />-->
+
+        <!--<ToggleButton-->
+            <!--android:id="@+id/tgbLeiras"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textOn="Leiras"-->
+            <!--android:textOff="Leiras"-->
+            <!--android:text="Leiras" />-->
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/GridLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:rowCount="2"
+        android:orientation="horizontal"
+        tools:context=".GridXMLActivity" >
 
         <ToggleButton
             android:id="@+id/tgbEkezet"
@@ -49,7 +91,9 @@
             android:layout_height="wrap_content"
             android:textOn="Cimke"
             android:textOff="Cimke"
-            android:text="Cimke" />
+            android:text="Cimke"
+            android:layout_row="1"
+            android:layout_column="0"/>
 
         <ToggleButton
             android:id="@+id/tgbLeiras"
@@ -59,7 +103,18 @@
             android:textOff="Leiras"
             android:text="Leiras" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:onClick="navigateToSettings"
+            android:text="Beallitas"
+            android:layout_row="0"
+            android:layout_rowSpan="2"
+            android:layout_column="3"
+            android:layout_gravity="center"/>
+
+    </GridLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.calibreofflinesearcher;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -40,12 +42,26 @@ public class MainActivity extends AppCompatActivity {
                 fileOpener.openBook(getApplicationContext(), bookInfos.get(position).path);
             }
         });
+        final MainActivity that = this;
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                that.openDetails(getApplicationContext(), bookInfos.get(position));
+                return true;
+            }
+        });
 
         try {
             queryExecuter.connectQueryDatabase(LIBRARY_LOCATION);
         } catch (Exception e) {
             Toast.makeText(this, String.format("Error: %s", e.getMessage()), Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void openDetails(Context applicationContext, BookInfo bookInfo) {
+        Intent intent = new Intent(this, ItemDetails.class);
+        startActivity(intent);
     }
 
     public void sendMessage(View view) {
@@ -70,5 +86,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         listViewAdapter.notifyDataSetChanged();
+    }
+
+    public void navigateToSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }
