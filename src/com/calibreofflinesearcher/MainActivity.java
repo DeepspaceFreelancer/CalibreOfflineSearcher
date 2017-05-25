@@ -3,6 +3,7 @@ package com.calibreofflinesearcher;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity {
+	
+	public static MainActivity INSTANCE = null;
 
     private final List<String> listItems = new ArrayList<>();
 
@@ -27,11 +30,14 @@ public class MainActivity extends Activity {
 
     //private final static String LIBRARY_LOCATION = "/mnt/sdcard/EkartLaszlo/Magyar2/";
     //private final static String LIBRARY_LOCATION = "/mnt/external_sd/Magyar/";
+    private final static String KEY = "doc_loc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        Settings.getInstance().setLibraryLocation(sharedPref.getString(KEY, Settings.getInstance().getLibraryLocation()));
 
         listViewAdapter = new ArrayAdapter<String>(this, R.layout.list_black_text, R.id.list_content, listItems);
         ListView listView = (ListView) findViewById(R.id.lstEredmeny);
@@ -59,6 +65,11 @@ public class MainActivity extends Activity {
         if(!queryExecuter.isOpen()) {
             try {
                 queryExecuter.connectQueryDatabase(Settings.getInstance().getLibraryLocation());
+                SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(KEY, Settings.getInstance().getLibraryLocation());
+                editor.commit();
+
             } catch (Exception e) {
                 Toast.makeText(this, String.format("Error: %s", e.getMessage()), Toast.LENGTH_LONG).show();
             }

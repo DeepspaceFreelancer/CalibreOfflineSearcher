@@ -247,7 +247,6 @@ public class SettingsActivity extends Activity {
     }
 
     public void sendBackButton(View view) {
-        showFileChooser();
         finish();
     }
 
