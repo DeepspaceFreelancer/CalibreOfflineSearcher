@@ -32,7 +32,17 @@ class QueryExecuter {
         }
     }
 
-    //private final static String LIBRARY_NAME = "normalized.db";
+    private static final QueryExecuter ourInstance = new QueryExecuter();
+
+    static QueryExecuter getInstance() {
+        return ourInstance;
+    }
+    
+    private QueryExecuter() {
+    	connection = null;
+    }
+
+
     private SQLiteDatabase connection;
 
     public boolean isOpen() {
@@ -85,13 +95,14 @@ class QueryExecuter {
         try {
             cursor = connection.rawQuery(query, null);
             while (cursor.moveToNext()) {
-                final int id = cursor.getInt(1);
+                final int id = cursor.getInt(0);
                 final String title = cursor.getString(1);
                 final String author = cursor.getString(2);
-                final String path = cursor.getString(3);
+                final String publishDate = cursor.getString(3);
+                final String path = cursor.getString(4);                
                 //final String tags = cursor.getString(5);
                 //final String description = cursor.getString(6);
-                BookInfo bookInfo = new BookInfo(id, title, author, path);
+                BookInfo bookInfo = new BookInfo(id, title, author, publishDate, path);
                 books.add(bookInfo);
             }
         } finally {
@@ -100,5 +111,28 @@ class QueryExecuter {
             }
         }
         return books;
+    }
+    
+    public FullBookInfo getFullBookInfo(int id) {
+        String query = "SELECT * FROM normalizedbooks WHERE id='" + id + "'";
+        Cursor cursor = null;
+        try {
+            cursor = connection.rawQuery(query, null);
+            while (cursor.moveToNext()) {
+                final String title = cursor.getString(1);
+                final String author = cursor.getString(2);
+                final String publishDate = cursor.getString(3);
+                final String path = cursor.getString(4);                
+                final String tags = cursor.getString(5);
+                final String description = cursor.getString(6);
+                FullBookInfo bookInfo = new FullBookInfo(id, title, author, publishDate, path, tags, description);
+                return bookInfo;
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return null;
     }
 }

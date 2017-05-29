@@ -1,7 +1,7 @@
 package com.calibreofflinesearcher;
 
 /**
- * Created by zsoltessig on 23/05/2017.
+ * Created by Essig Zsolt on 23/05/2017.
  */
 
 class Settings {
@@ -11,7 +11,7 @@ class Settings {
         return ourInstance;
     }
 
-    private String LibraryLocation = "/sdcard/normalized.db";
+    private String LibraryLocation = "/sdcard/cap/magyar/normalized.db";
 
     private Settings() {
     }

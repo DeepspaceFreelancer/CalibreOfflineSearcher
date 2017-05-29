@@ -13,9 +13,100 @@
         android:onClick="sendBackButton"
         android:text="Vissza" />
     
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Something" />
+    <LinearLayout 	        
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+    
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="Szerző: " />
+        
+        <TextView
+            android:id="@+id/textAuthor"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="" />
+        
+    </LinearLayout>
+    
+    <LinearLayout 	        
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+    
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="Cím: " />
+        
+        <TextView
+            android:id="@+id/textTitle"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="" />
+        
+    </LinearLayout>
+    
+    <LinearLayout 	        
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+    
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="Kiadás éve: " />
+        
+        <TextView
+            android:id="@+id/textpublishDate"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="" />
+        
+    </LinearLayout>
+    
+    <LinearLayout 	        
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+    
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="Cimkék: " />
+        
+        <TextView
+            android:id="@+id/textTags"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_large"
+	        android:text="" />
+        
+    </LinearLayout>
+    
+    <LinearLayout 	        
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+    
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_sm"
+	        android:text="Leirás: " />
+        
+        <TextView
+            android:id="@+id/textDescription"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/font_size_sm"
+	        android:text="" />
+        
+    </LinearLayout>
+    
 
 </LinearLayout>

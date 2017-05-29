@@ -25,30 +25,31 @@ public class MainActivity extends Activity {
     private List<BookInfo> bookInfos;
     private ArrayAdapter<String> listViewAdapter;
 
-    private final QueryExecuter queryExecuter = new QueryExecuter();
+    private QueryExecuter queryExecuter = null;
     private final FileOpener fileOpener = new FileOpener();
 
-    //private final static String LIBRARY_LOCATION = "/mnt/sdcard/EkartLaszlo/Magyar2/";
-    //private final static String LIBRARY_LOCATION = "/mnt/external_sd/Magyar/";
     private final static String KEY = "doc_loc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        queryExecuter = QueryExecuter.getInstance();
+        
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         Settings.getInstance().setLibraryLocation(sharedPref.getString(KEY, Settings.getInstance().getLibraryLocation()));
 
         listViewAdapter = new ArrayAdapter<String>(this, R.layout.list_black_text, R.id.list_content, listItems);
         ListView listView = (ListView) findViewById(R.id.lstEredmeny);
         listView.setAdapter(listViewAdapter);
+        final MainActivity that = this;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 fileOpener.openBook(getApplicationContext(), bookInfos.get(position).path);
             }
-        });
-        final MainActivity that = this;
+        });        
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
@@ -77,8 +78,11 @@ public class MainActivity extends Activity {
     }
 
     private void openDetails(Context applicationContext, BookInfo bookInfo) {
-        Intent intent = new Intent(this, ItemDetails.class);
-        startActivity(intent);
+    	final Intent intent = new Intent(this, ItemDetails.class);
+        final Bundle bundle = new Bundle();
+        bundle.putInt(Constants.id, bookInfo.id);
+        intent.putExtras(bundle);
+        startActivity(intent);        
     }
 
     public void sendMessage(View view) {
@@ -95,8 +99,8 @@ public class MainActivity extends Activity {
         try {
             QueryExecuter.QueryControlParams queryControlParams = new QueryExecuter.QueryControlParams(accentsOn, titleOn, authorOn, tagsOn, descriptionOn);
             bookInfos = queryExecuter.execute(queryControlParams, queryText);
-            for (BookInfo bookInfo : bookInfos) {
-                listItems.add(bookInfo.author + " - " + bookInfo.title);
+            for (BookInfo bookInfo : bookInfos) { 
+                listItems.add(bookInfo.publishDate + " - " + bookInfo.author + " - " + bookInfo.title);
             }
         } catch (Exception e) {
             Toast.makeText(this, String.format("Error: %s", e.getMessage()), Toast.LENGTH_LONG).show();

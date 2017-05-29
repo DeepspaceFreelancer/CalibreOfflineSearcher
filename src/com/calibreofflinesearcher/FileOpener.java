@@ -33,22 +33,34 @@ public class FileOpener {
         if(directory.isDirectory()) {
             final File[] files = directory.listFiles();
             for (int i = 0; i < files.length; i++) {
-                final String fileName = files[i].getName();
+            	final File file = files[i];
+                final String fileName = file.getName();
                 String extension = fileName.substring(fileName.lastIndexOf("."));
-                if (extension.toLowerCase().equals(".txt")) {
-
-                    final Intent newIntent = new Intent(Intent.ACTION_VIEW);
-                    newIntent.setDataAndType(Uri.fromFile(files[i].getAbsoluteFile()), mimeTypeMap.get(extension));
-                    newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    try {
-                        context.startActivity(newIntent);
-                    } catch (ActivityNotFoundException e) {
-                        Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
-                    }
+                if (extension.toLowerCase().equals(".epub")) {                	
+                    openFile(context, extension, file);
+                    return fileName;
+                }
+                if (extension.toLowerCase().equals(".pdf")) {                	
+                    openFile(context, extension, file);
+                    return fileName;
+                }
+                if (extension.toLowerCase().equals(".mobi")) {                	
+                    openFile(context, extension, file);
                     return fileName;
                 }
             }
         }
         return "BookNotFound";
     }
+
+	private void openFile(final Context context, String extension, final File file) {
+		final Intent newIntent = new Intent(Intent.ACTION_VIEW);
+		newIntent.setDataAndType(Uri.fromFile(file.getAbsoluteFile()), mimeTypeMap.get(extension));
+		newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		try {
+		    context.startActivity(newIntent);
+		} catch (ActivityNotFoundException e) {
+		    Toast.makeText(context, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+		}
+	}
 }
