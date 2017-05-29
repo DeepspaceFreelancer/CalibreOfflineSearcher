@@ -1,6 +1,6 @@
 
 # Eclipse
-# /bin
+/bin
 
 # Android Studio
 *.iml
