@@ -7,7 +7,7 @@ Here is how to use it:
 2. Install this software. (If your eReader lacks ES File Manager install that one too).
 3. Go to the Program Settings (Beállítások in Hungarian) and select Calibre metadata database (metadata.db).
 4. Generate a normalized database (used for faster search) by pressing the button: "Normalizált Adatbázis Frissítés".
-5. Get back and Search. Use a Hungarian-English dictinary if in trouble.
+5. Get back and Search. Use a Hungarian-English dictionary if in trouble.
 6. Simple click (press) is open the book. Long press details.
 
 I wrote this application by having no Android programming experience and sometimes asking help from my cousin.
