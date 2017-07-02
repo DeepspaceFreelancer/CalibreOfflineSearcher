@@ -3,35 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="fill_parent"   
     tools:context="com.calibreofflinesearcher.SettingsActivity"
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSettingBack"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:onClick="sendBackButton"
         android:text="Vissza" />
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/editText"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal" >
+        
+        <TextView android:id="@+id/lblCalibreDB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_marginLeft="3dp"
+            android:text="CalibreDb:  "
+            android:enabled="false"/>
+        <EditText
+            android:id="@+id/editCalibreDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:ems="17"
+            android:inputType="textPersonName"
+            android:text=""
+            android:enabled="false"/>
+        <Button
+            android:id="@+id/btnCalibreDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:onClick="sendCalibreDBSearch"
+            android:text="Kiválasztás" />
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/btnSettingRefreshNMDB"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:onClick="sendRefreshNMBD"
+        android:text="Normalizált Adatbázis Frissítés" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/lblNMDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="Normalizált:"            
+            android:enabled="false"/>
+        <EditText
+            android:id="@+id/editNMDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:ems="17"
             android:inputType="textPersonName"
             android:text="Name"
             android:enabled="false"/>
         <Button
-            android:id="@+id/button2000"
+            android:id="@+id/btnNMDB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:layout_weight="1"
-            android:onClick="searchFile"
+            android:onClick="sendNMDBSearch"
             android:text="Kiválasztás" />
     </LinearLayout>
+    
+    <Button
+        android:id="@+id/btnClearHistory"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:onClick="sendClearHistory"
+        android:text="Történet Törlés" />
+    
 </LinearLayout>

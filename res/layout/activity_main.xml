@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"   
     android:id="@+id/mainLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -17,6 +17,7 @@
 
         <ToggleButton
             android:id="@+id/tgbEkezet"
+            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"                        
             android:textOn="Ékezet: Be"
@@ -25,8 +26,10 @@
 
         <ToggleButton
             android:id="@+id/tgbCim"
+            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:textOn="Cím: Be"
             android:textOff="Cím: Ki"
             android:text="Cim">
@@ -34,14 +37,17 @@
 
         <ToggleButton
             android:id="@+id/tgbSzerzo"
+            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:textOn="Szerző: Be"
             android:textOff="Szerző: Ki"
             android:text="Szerzo" />
 
         <ToggleButton
             android:id="@+id/tgbCimke"
+            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOn="Cimke: Be"
@@ -50,20 +56,13 @@
 
         <ToggleButton
             android:id="@+id/tgbLeiras"
+            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOn="Leirás: Be"
             android:textOff="Leirás: Ki"
             android:text="Leiras" />
-
-        <Button
-            android:id="@+id/btnSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="navigateToSettings"
-            android:text="Beállítások"
-            android:layout_gravity="center"/>
-
+        
     </LinearLayout>
 
     <LinearLayout 
@@ -71,8 +70,17 @@
         android:layout_height="60dp"
         android:orientation="horizontal" >
 
+        <Button
+            android:id="@+id/btnTortenet"
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendHistory"
+            android:text="Történet" />
+        
         <EditText
             android:id="@+id/txbSzo"
+            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="52dp"
             android:textColor="#000000"
@@ -81,10 +89,20 @@
 
         <Button
             android:id="@+id/btnKereses"
+            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="sendMessage"
             android:text="Keresés" />
+        
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="navigateToSettings"
+            android:text="Beállítások"
+            />
 
     </LinearLayout>
 

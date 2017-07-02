@@ -7,4 +7,9 @@ class Constants {
     static final String path = "path";
     static final String tags = "tags";
     static final String description = "description";
+    
+	static final String CALIBRE_DATABASE_LOCATION_KEY = "calibre_database_location";
+	static final String NORMALIZED_DATABASE_LOCATION_KEY = "normalized_database_location";
+	static final String HISTORY_KEY = "history";
+
 }
